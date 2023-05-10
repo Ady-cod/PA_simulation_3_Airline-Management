@@ -1,0 +1,42 @@
+@startuml
+class AirlineCompany{
+-flights:List<FlightAttendant>;
+-airlineEmployees:List<AirlineEmployee>;
++displayFlightsStatus():void;
+}
+class Flight{
+-id:UUID;
+-flightLanguage:Language;
+-pilots:List<Pilot>;
+-flightAttendants:List<FlightAttendant>;
+}
+abstract class AirlineEmployee{
+-name:String;
+-birthDate:LocalDate;
+}
+class Pilot extends AirlineEmployee{
+-pilotFunction:PilotFunction;
+-analogCompass:boolean;
+}
+class FlightAttendant extends AirlineEmployee{
+-languagesSpoken:List<Language>;
+}
+enum PilotFunction{
+CAPTAIN,
+COPILOT
+}
+enum Language{
+ENGLISH,
+GERMAN,
+SPANISH,
+POLISH
+}
+AirlineCompany-->AirlineEmployee
+AirlineCompany-->Flight
+Flight-->Language
+Flight-->Pilot
+Flight-->FlightAttendant
+Pilot-->PilotFunction
+FlightAttendant-->Language
+
+@enduml
